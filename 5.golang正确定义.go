@@ -61,7 +61,7 @@ func main() {
 	var num4 int64 = 1010
 	fmt.Println(strconv.FormatInt(num4, 10)) //1010
 
-	//字符串与[]byte转化
+	//字符串与[]byte转化 （字符串与切片）
 	var str3 string = "今天天气很好"
 	fmt.Println([]byte(str3)) //[228 187 138 229 164 169 229 164 169 230 176 148 229 190 136 229 165 189]
 
