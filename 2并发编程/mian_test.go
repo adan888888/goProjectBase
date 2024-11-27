@@ -8,6 +8,9 @@ import (
 	"time"
 )
 
+/**1.通道关闭的案例*/
+/**2.单独退出通道，传输数据不使用一个channel*/
+
 /**time.After(time.Second * 2) 超过2秒就要发送信号了 2秒后的就收不到了*/
 func Test2(t *testing.T) {
 	test := make(chan int, 10)

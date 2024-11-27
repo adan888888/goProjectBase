@@ -8,6 +8,7 @@ import (
 	"time"
 )
 
+// 在管道中(申明管道，取值) 包含for的死循环
 func main() {
 	fmt.Println("开始程序")
 	quit := make(chan os.Signal, 1)
