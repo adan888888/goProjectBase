@@ -46,20 +46,45 @@ func main() {
 	var num1 int = 100
 	fmt.Println(num1) //100
 
+	//数值类型之间的可以强转
 	var num2 int64 = 100
 	fmt.Println(float64(num2))
 
-	//字符串与数字类型互转
+	//数字(int)转字符串
 	var nmu3 int = 100
 	fmt.Println(strconv.Itoa(nmu3) + "abc") //100abc
 
-	//字符串转整型
+	//字符串转数字(int)
 	var str1 string = "100abc"
-	fmt.Println(strconv.Atoi(str1)) //100 <nil>
+	fmt.Println(strconv.Atoi(str1)) //100 <nil>  /  0 strconv.Atoi: parsing "100abc": invalid syntax
+
+	/**
+	  2.字符串转基本类型
+	*/
+	//字符串转换为float32，转换为bool
+	float, err := strconv.ParseFloat("3.1415", 64)
+	if err != nil {
+		return
+	}
+	fmt.Println(float)
+
+	//字符串转换为int
+	fmt.Println(strconv.ParseInt("10", 10, 64))
+
+	/**
+	  3.基本类型转字符串
+	*/
+	//布尔值转string
+	formatBool := strconv.FormatBool(true)
+	fmt.Println(formatBool)
 
 	//int64转字符串
 	var num4 int64 = 1010
 	fmt.Println(strconv.FormatInt(num4, 10)) //1010
+
+	//int64转字符串
+	var ff float64 = 3.1415926
+	fmt.Println(strconv.FormatFloat(ff, 'f', -1, 64))
 
 	//字符串与[]byte转化 （字符串与切片）
 	var str3 string = "今天天气很好"
