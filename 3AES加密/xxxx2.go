@@ -9,10 +9,11 @@ import (
 )
 
 func main() {
-	var KEY = []byte("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaab") //AES - 256 使用 32 字节密钥
-	var IV = []byte("aaaaaaaaaaaaaaaa")
+	//初始化项量和密钥必须和加密的时候一样才能解密成功
+	var KEY = []byte("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaab")
+	var IV = []byte("aaaaaaaaaaaaaaax")
 
-	mybyte, err := hex.DecodeString("2635c485dc84a03e7b3c636ca350e6ac") //直接加双引号也是16进制字符串, 转为16进制字节数组
+	mybyte, err := hex.DecodeString("c69afdc1bb6217ad930709b61fde0789") //直接加双引号也是16进制字符串, 转为16进制字节数组
 	if err != nil {
 		fmt.Println("Hex decode error:", err)
 		return
