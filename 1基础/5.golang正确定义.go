@@ -50,7 +50,7 @@ func main() {
 	var num2 int64 = 100
 	fmt.Println(float64(num2))
 
-	//数字(int)转字符串
+	//数字(int)转字符串  Itoa i代表int a代表char类型
 	var nmu3 int = 100
 	fmt.Println(strconv.Itoa(nmu3) + "abc") //100abc
 
@@ -59,7 +59,7 @@ func main() {
 	fmt.Println(strconv.Atoi(str1)) //100 <nil>  /  0 strconv.Atoi: parsing "100abc": invalid syntax
 
 	/**
-	  2.字符串转基本类型
+	  2.Parse字符串转基本类型
 	*/
 	//字符串转换为float32，转换为bool
 	float, err := strconv.ParseFloat("3.1415", 64)
@@ -68,11 +68,20 @@ func main() {
 	}
 	fmt.Println(float)
 
+	//字符串转为int，如果没有其它进度的话，直接使用为上面的 strconv.Atoi
+	parseInt, err := strconv.ParseInt("-42", 8, 64) //base:进制(8,10,16)， bitSize:位数
+	if err != nil {
+		return
+	}
+
+	fmt.Println("---------------------")
+	fmt.Println(parseInt)
+
 	//字符串转换为int
 	fmt.Println(strconv.ParseInt("10", 10, 64))
 
 	/**
-	  3.基本类型转字符串
+	  3. format基本类型转字符串
 	*/
 	//布尔值转string
 	formatBool := strconv.FormatBool(true)
@@ -83,8 +92,8 @@ func main() {
 	fmt.Println(strconv.FormatInt(num4, 10)) //1010
 
 	//int64转字符串
-	var ff float64 = 3.1415926
-	fmt.Println(strconv.FormatFloat(ff, 'f', -1, 64))
+	var ff = 3.1415926
+	fmt.Println(strconv.FormatFloat(ff, 'f', -1, 32)) //fmt(格式)原来是什么样了的格式就是什么样的 -1使用最小精度
 
 	//字符串与[]byte转化 （字符串与切片）
 	var str3 string = "今天天气很好"
@@ -110,6 +119,19 @@ func main() {
 	fmt.Println(utf8.ValidString(str1)) //难证是否是utf8
 	str1 = "A\\n fcC"
 	fmt.Println(utf8.ValidString(str1))
+
+	/////////////////////////// 9.字符串的长度//////////////////////////////////////////////////////////////////////////
+	name1 := "jack你好"
+	bytes12 := []rune(name1) //如果有中文，不能直接使用len，要先转成[]rune
+	fmt.Println(len(bytes12))
+
+	//转义符 \t tab建  \r\n回车换行符
+	courseName := "go体系课\r\n你好"
+	fmt.Println(courseName)
+
+	courseName1 := "go体系课\\r\\n你好"
+	fmt.Println(courseName1)
+
 }
 func get() (res int, err error) {
 	fmt.Println("call get")
