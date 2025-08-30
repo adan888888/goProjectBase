@@ -10,10 +10,10 @@ import (
 
 func main() {
 	//初始化项量和密钥必须和加密的时候一样才能解密成功
-	var KEY = []byte("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaab")
-	var IV = []byte("aaaaaaaaaaaaaaax")
+	var KEY = []byte("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+	var IV = []byte("0123456789abcdef")
 
-	mybyte, err := hex.DecodeString("c69afdc1bb6217ad930709b61fde0789") //直接加双引号也是16进制字符串, 转为16进制字节数组
+	mybyte, err := hex.DecodeString("6e91a3c860e43f6c9fa630f0c55dc9bf") //直接加双引号也是16进制字符串, 转为16进制字节数组
 	if err != nil {
 		fmt.Println("Hex decode error:", err)
 		return

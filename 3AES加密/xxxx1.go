@@ -4,12 +4,13 @@ import (
 	"bytes"
 	"crypto/aes"
 	"crypto/cipher"
+	"encoding/base64"
 	"fmt"
 )
 
 func main() {
-	var KEY = []byte("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaab") //密钥长度必须为 16/24/32 字节。我这里使用的是AES - 256 使用 32 字节密钥
-	var IV = []byte("aaaaaaaaaaaaaaax")                  //初始化向量（CBC/CFB/OFB模式需要，长度必须等于块大小16字节）
+	var KEY = []byte("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa") //密钥长度必须为 16/24/32 字节。我这里使用的是AES - 256 使用 32 字节密钥
+	var IV = []byte("0123456789abcdef")                  //初始化向量（CBC/CFB/OFB模式需要，长度必须等于块大小16字节）
 	plaintext := []byte("123456")
 	// 加密
 	encrypted, err := AESEncrypt1(plaintext, KEY, IV)
@@ -17,7 +18,8 @@ func main() {
 		fmt.Println("Encryption error:", err)
 		return
 	}
-	fmt.Printf("Encrypted: %x\n", encrypted)
+	fmt.Printf("16进制 Encrypted: %x\n", encrypted)
+	fmt.Printf("64进制 Encrypted: %s\n", base64.StdEncoding.EncodeToString(encrypted))
 
 }
 
