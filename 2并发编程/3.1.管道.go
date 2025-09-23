@@ -14,7 +14,7 @@ func main() {
 	go func(msg chan string) { //go有一种happen-before的机制，可以保障
 		fmt.Println(".....1")
 		select {
-		case data := <-msg:
+		case data := <-msg: //<-msg从管道里面读取--监听通道
 			//卡在这里等待 从管道里读取值
 			fmt.Println(".....3", data)
 		}
@@ -23,7 +23,7 @@ func main() {
 
 	time.Sleep(2 * time.Second)
 	fmt.Println(".....2")
-	msg <- "hello" //一写入数据子协程马上会读取
+	msg <- "hello" //(msg <-)向管道里面写入数据，一写入数据子协程马上会读取
 
 	//waitgroup 如果少了done调用，容易出现deadlock,无缓冲的channel也容易出现
 	time.Sleep(time.Second * 5)
