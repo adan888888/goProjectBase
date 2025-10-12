@@ -19,7 +19,7 @@ func main() {
 		return
 	}
 	fmt.Printf("16进制 Encrypted: %x\n", encrypted)
-	fmt.Printf("64进制 Encrypted: %s\n", base64.StdEncoding.EncodeToString(encrypted))
+	fmt.Printf("base64编码 Encrypted: %s\n", base64.StdEncoding.EncodeToString(encrypted))
 
 }
 
