@@ -18,7 +18,7 @@ type DepartmentModel struct {
 	EmployeeList []EmployeeModel `gorm:"foreignKey:DeptNoX;references:DeptNo"` // 一对多关联，使用字符串外键。foreignKey:他人;references:自己
 	CreatedAt    time.Time
 	UpdatedAt    time.Time
-	DeletedAt    gorm.DeletedAt `gorm:"index"`
+	DeletedAt    gorm.DeletedAt `gorm:"index"` // grom框架只要有DeletedAt这就是软删除字段
 }
 
 type EmployeeModel struct {
