@@ -32,10 +32,12 @@ func MigrateDB() {
 	//dropExistingTables()
 
 	err := DB.AutoMigrate(
-		&models.UserModel{},
-		&models.UserDetailModel{},
-		&models.DepartmentModel{},
-		&models.EmployeeModel{},
+		//&models.UserModel{},
+		//&models.UserDetailModel{},
+		//&models.DepartmentModel{},
+		//&models.EmployeeModel{},
+		&models.StudentModel{},
+		&models.CourseModel{},
 	)
 	if err != nil {
 		log.Fatal("创建用户表失败:", err)
