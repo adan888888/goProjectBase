@@ -1,6 +1,7 @@
 package main
 
 import (
+	"aes-encryption/constants"
 	"bytes"
 	"crypto/aes"
 	"crypto/cipher"
@@ -9,11 +10,9 @@ import (
 )
 
 func main() {
-	var KEY = []byte("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa") //密钥长度必须为 16/24/32 字节。我这里使用的是AES - 256 使用 32 字节密钥
-	var IV = []byte("0123456789abcdef")                  //初始化向量（CBC/CFB/OFB模式需要，长度必须等于块大小16字节）
 	plaintext := []byte("123456")
-	// 加密
-	encrypted, err := AESEncrypt1(plaintext, KEY, IV)
+	// 加密 - 使用常量包
+	encrypted, err := AESEncrypt1(plaintext, constants.GetAESKey(), constants.GetAESIV())
 	if err != nil {
 		fmt.Println("Encryption error:", err)
 		return
