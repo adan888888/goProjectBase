@@ -29,7 +29,7 @@ func InitDB() {
 // 自动迁移数据库表
 func MigrateDB() {
 	// 先删除现有的表（如果存在）
-	//dropExistingTables()
+	dropExistingTables()
 
 	err := DB.AutoMigrate(
 		//&models.UserModel{},
@@ -38,6 +38,7 @@ func MigrateDB() {
 		//&models.EmployeeModel{},
 		&models.StudentModel{},
 		&models.CourseModel{},
+		&models.StudentCourse{}, // 添加自定义中间表
 	)
 	if err != nil {
 		log.Fatal("创建用户表失败:", err)
@@ -48,9 +49,20 @@ func MigrateDB() {
 
 // 删除现有的表
 func dropExistingTables() {
+	// 禁用外键约束检查
+	DB.Exec("SET FOREIGN_KEY_CHECKS = 0")
+
 	// 删除表（按依赖顺序）
+	DB.Exec("DROP TABLE IF EXISTS student_courses")
+	DB.Exec("DROP TABLE IF EXISTS course_models")
+	DB.Exec("DROP TABLE IF EXISTS student_models")
 	DB.Exec("DROP TABLE IF EXISTS employee_models")
 	DB.Exec("DROP TABLE IF EXISTS department_models")
+	DB.Exec("DROP TABLE IF EXISTS user_detail_models")
+	DB.Exec("DROP TABLE IF EXISTS user_models")
+
+	// 重新启用外键约束检查
+	DB.Exec("SET FOREIGN_KEY_CHECKS = 1")
 
 	fmt.Println("已删除现有表")
 }
