@@ -29,16 +29,17 @@ func InitDB() {
 // 自动迁移数据库表
 func MigrateDB() {
 	// 先删除现有的表（如果存在）
-	dropExistingTables()
+	//dropExistingTables()
 
 	err := DB.AutoMigrate(
 		//&models.UserModel{},
 		//&models.UserDetailModel{},
 		//&models.DepartmentModel{},
 		//&models.EmployeeModel{},
-		&models.StudentModel{},
-		&models.CourseModel{},
-		&models.StudentCourse{}, // 添加自定义中间表
+		//&models.StudentModel{},
+		//&models.CourseModel{},
+		//&models.StudentCourse{}, // 添加自定义中间表
+		&models.UserZdy{},
 	)
 	if err != nil {
 		log.Fatal("创建用户表失败:", err)

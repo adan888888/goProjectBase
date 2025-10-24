@@ -6,7 +6,7 @@ type PersonB struct {
 	name string
 }
 
-func changeName(p *PersonB) { //传指针就是值传递
+func changeName(p *PersonB) { //传指针就是引用传递，不用指针就是值传递
 	p.name = "aaa"
 }
 func main() {
