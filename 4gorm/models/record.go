@@ -2,8 +2,9 @@ package models
 
 import (
 	"fmt"
-	"gorm.io/gorm"
 	"time"
+
+	"gorm.io/gorm"
 )
 
 type Record struct {
@@ -17,7 +18,7 @@ type SingleTable struct {
 	Name       string `gorm:"unique"`
 	Age        uint
 	Adres      string
-	CreateTime time.Time `gorm:"default:CURRENT_TIMESTAMP"`
+	CreateTime time.Time `gorm:"autoCreateTime"`
 }
 
 func (s *SingleTable) BeforeCreate(tx *gorm.DB) error {

@@ -39,9 +39,10 @@ func MigrateDB() {
 		//&models.StudentModel{},
 		//&models.CourseModel{},
 		//&models.StudentCourse{}, // 添加自定义中间表
-		&models.UserZdy{},
-		&models.Record{},
-		&models.SingleTable{},
+		//&models.UserZdy{},
+		//&models.Record{},
+		//&models.SingleTable{},
+		&models.UserTestIndex{}, // 添加测试索引表
 	)
 	if err != nil {
 		log.Fatal("创建用户表失败:", err)
