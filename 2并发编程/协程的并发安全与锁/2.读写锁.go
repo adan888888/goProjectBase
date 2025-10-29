@@ -16,6 +16,7 @@ func main() {
 	var num int
 	var rwlock sync.RWMutex
 	wg.Add(6)
+
 	//写gorotine
 	go func() {
 		time.Sleep(3 * time.Second) //先让程序拿到读锁  3秒后 写锁工作（写锁也会防止，读锁加锁），所以停止5秒卡在读的锁那里，再继续执行后面程序

@@ -10,8 +10,6 @@ var done bool
 var lock1 sync.Mutex
 
 func main() {
-	//select 的作用主要用于多个channel
-
 	//现在两个goroutine都在执行，但是我在主goroutine中当一个完成之后，这时候我会立马通知
 	go g1()
 	go g2()
