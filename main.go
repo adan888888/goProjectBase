@@ -2,8 +2,8 @@ package main
 
 import (
 	"fmt"
-	p1 "goProjectBase/package1" //可以要别名，也可以不要别名。不要别名，就是包名package1.
-	xx "goProjectBase/package3"
+	p1 "goProjectBase/6package_manager/package1"
+	xx "goProjectBase/6package_manager/package3"
 )
 
 func main() {

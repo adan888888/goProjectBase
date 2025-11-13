@@ -42,7 +42,7 @@ func main() {
 	fmt.Println(d) //69 说明是引用类型
 	fmt.Println("---------------------------------------------------")
 
-	//6.管道阻塞
+	//6package_manager.管道阻塞
 	/*ch6 := make(chan int, 1)
 	ch6 <- 34
 	ch6 <- 35 //all goroutines are asleep - deadlock!  ❌超过容量还在存死锁 造成阻塞*/

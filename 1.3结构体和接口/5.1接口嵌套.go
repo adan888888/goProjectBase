@@ -30,6 +30,6 @@ func (s *SreadWriter) ReadWriter() {
 }
 
 func main() {
-	var w MyReaderWriter = &SreadWriter{} //指针对象的接收者必须使用 & ，值对象的接收者两个都可以使用
+	var w MyReaderWriter = /*接口类型*/ &SreadWriter{} //指针对象的接收者必须使用 & ，值对象的接收者两个都可以使用
 	w.Reader()
 }

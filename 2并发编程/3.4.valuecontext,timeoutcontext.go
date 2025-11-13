@@ -36,7 +36,7 @@ func main() {
 
 	ctx = context.WithValue(ctx, "traceid", "123")
 	go cupIInfo1(ctx)
-	//time.Sleep(6 * time.Second) 现在也不需要这个了
+	//time.Sleep(6package_manager * time.Second) 现在也不需要这个了
 	wg3.Wait()
 	fmt.Println("监控完成")
 }

@@ -165,7 +165,7 @@ func main() {
 	// 5. 更新用户信息
 	demonstrateUpdateUser()
 
-	// 6. 再次查询所有用户
+	// 6package_manager. 再次查询所有用户
 	demonstrateGetAllUsersAfterUpdate()
 
 	// 7. 创建用户详情

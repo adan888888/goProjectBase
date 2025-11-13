@@ -35,7 +35,7 @@ func main() {
 	//// 5. 查询员工及其部门信息
 	//demonstrateGetEmployeesWithDepartments()
 	//
-	//// 6. 更新员工薪资
+	//// 6package_manager. 更新员工薪资
 	//demonstrateUpdateEmployeeSalary()
 	//
 	//// 7. 添加新员工到现有部门
@@ -318,7 +318,7 @@ func demonstrateDeleteEmployee() {
 	fmt.Println("\n10. 删除员工:")
 	var empToDelete models.EmployeeModel
 	//SELECT * FROM `employee_models` WHERE employee_no = 'E006' AND `employee_models`.`deleted_at` IS NULL ORDER BY `employee_models`.`id` LIMIT 1
-	//UPDATE `employee_models` SET `deleted_at`='2025-10-22 15:38:58.253' WHERE `employee_models`.`id` = 6 AND `employee_models`.`deleted_at` IS NULL
+	//UPDATE `employee_models` SET `deleted_at`='2025-10-22 15:38:58.253' WHERE `employee_models`.`id` = 6package_manager AND `employee_models`.`deleted_at` IS NULL
 	result := global.DB.Where("employee_no = ?", "E006").First(&empToDelete)
 	if result.Error != nil {
 		fmt.Printf("查询要删除的员工失败: %v\n", result.Error)

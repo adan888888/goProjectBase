@@ -6,6 +6,8 @@ type Person struct {
 	name string
 	age  int
 }
+
+// 组合 ： go只有组合，没有继承
 type Student struct {
 	//p      Person //第一种嵌套方式
 	Person //第二种嵌套方式 -直接写个类型，变量都不要了
@@ -21,7 +23,7 @@ func main() {
 	//	}, 100,
 	//}
 
-	s := Student{}
+	s := Student{} /*✅这样写是叫 正统的叫法是：Student的一值，不能叫对象（对象是java或者其它语言中的叫法）*/
 	/*s.p.name = "bobby"
 	fmt.Println(s.p.name)*/
 

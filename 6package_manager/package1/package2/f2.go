@@ -2,7 +2,7 @@ package package2
 
 import (
 	"fmt"
-	"goProjectBase/package1"
+	"goProjectBase/6package_manager/package1"
 )
 
 func F2() {
