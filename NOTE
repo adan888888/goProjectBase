@@ -1,0 +1,39 @@
+Go 项目命名规范总结
+
+1. 项目名（module 名）- 用横杠（-）
+    // go.mod
+    module go-project-base        // ✅ 用横杠
+    module my-user-service        // ✅ 用横杠
+    module github.com/user/my-api // ✅ 用横杠
+
+2.文件夹名 - 通常不用下划线
+    // ✅ 推荐：多个单词连写
+    userhandlers/
+    orderservice/
+
+    // ⚠️ 可用但不推荐：下划线
+    user_handlers/  // 可以，但不推荐
+    order_service/  // 可以，但不推荐
+
+3.文件名 - 用下划线
+    // ✅ 文件名用下划线
+    user_model.go
+    student_course.go
+    department_employee.go
+    user_test_index.go
+    order_handler.go
+
+
+
+总结
+标准命名规范：
+项目名（module）：用横杠（-）
+base
+   module go-project-base
+文件夹名：单个单词或连写，不用下划线
+   models/、handlers/、userhandlers/
+文件名：用下划线（）
+   user_model.go、order_handler.go
+包名：单个单词或连写，不用下划线
+   package models
+   package userhandlers

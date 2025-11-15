@@ -42,19 +42,18 @@ func main() {
 	fmt.Println(d) //69 说明是引用类型
 	fmt.Println("---------------------------------------------------")
 
-	//6package_manager.管道阻塞
+	//6.管道死锁
 	/*ch6 := make(chan int, 1)
 	ch6 <- 34
-	ch6 <- 35 //all goroutines are asleep - deadlock!  ❌超过容量还在存死锁 造成阻塞*/
+	ch6 <- 35 //all goroutines are asleep - deadlock!  1.❌超过容量还在存，死锁 造成阻塞*/
 
-	//在没有使用协程的情况下，如果管道数据已经全部取出，再取就会报告 deadlock
-	/*ch7 := make(chan string, 2)
+	/*ch7 := make(chan string, 2) //..eep - deadlock！ 2.❌取完了，还在取 也会造成死锁
 	ch7 <- "数据1"
 	ch7 <- "数据2"
 	m1 := <-ch7
 	m2 := <-ch7
 	m3 := <-ch7
-	fmt.Println(m1, m2, m3) //all goroutines are asleep - deadlock! ❌没有数据了，还在取 也会造成死锁*/
+	fmt.Println(m1, m2, m3) */
 
 	//7.管道的遍历
 	var ch8 = make(chan int, 10)
@@ -62,18 +61,16 @@ func main() {
 		ch8 <- i
 	}
 
-	//1.通过for rang循环遍历管道的时候， ✅一定要先关闭管道
+	//1.通过for rang循环遍历管道的时候， ✅一定要先关闭管道 3.❌不先关闭 也会造成死锁
 	//close(ch8) // ✅数据写完一定要关闭
-	//for rang循环遍历  ✅管道没有key
 	//for v := range ch8 {
 	//	fmt.Println(v)
 	//}
+	fmt.Println(" for循环---------------------------------------------------")
 
-	//2.通过for就不需要
-	for i := 0; i < 10; i++ {
+	//2.通过for就不需要   4.❌for循环取完了再取 也会造成死锁
+	for i := 0; i < 10; /*11*/ i++ {
 		fmt.Println(<-ch8)
 	}
-
 	fmt.Println("---------------------------------------------------")
-
 }
