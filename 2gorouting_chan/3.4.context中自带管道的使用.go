@@ -44,6 +44,10 @@ func cupIInfo(context context.Context) {
 
 var wg2 sync.WaitGroup
 
+/*
+监控cpu
+使用context实现优雅的退出程序
+*/
 func main() {
 	//在主线程中的是主groutine
 	wg2.Add(1)
@@ -52,7 +56,7 @@ func main() {
 	context1, cancel := context.WithCancel(context.Background())
 	context2, _ := context.WithCancel(context1) //会有传递性
 	//var stop = make(chan struct{})
-	go cupIInfo(context2) //使用context2也可以，因为有传递必
+	go cupIInfo(context2) //使用context2也可以，因为有传递
 	time.Sleep(6 * time.Second)
 	//stop <- struct{}{} //1秒后给子协程发一个停止消息。
 

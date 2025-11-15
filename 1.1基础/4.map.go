@@ -32,8 +32,8 @@ func main() {
 	//value["k1"] = 100  报错（panic: assignment to entry in nil map）， 此时 value 为 &map(nil)，无法直接使用
 	fmt.Println(value)
 
-	data := make(map[int]int)
-	data[1] = 999
+	data := make(map[int]int,2)//提示初始容量约为 2，如果不够会自动扩容
+	data[1] = 9999
 	data[2] = 888
 	fmt.Println(data)
 
@@ -41,7 +41,7 @@ func main() {
 	fmt.Println(value)
 	fmt.Println(*value)      //指针*
 	fmt.Println(len(*value)) //map的长度
-	//fmt.Println(cap(data))   //map的容量   报错
+	//fmt.Println(cap(data))   //map的容量   报错 go中的map没有容量的概念，只有chan slice 有
 
 	//删除
 	//delete(data, 1)

@@ -11,8 +11,8 @@ func main() {
 
 	////////////////////////1.变量定义////////////////////////////////////////////////////////////////////////////
 	var name string = "这里是名称"
-	var arr [10]int
-	var slice []string
+	var arr [10]int //定义一个数组
+	var slice []int //定义一个切片
 	var mp map[string]int
 
 	fmt.Println(name, arr)
