@@ -4,7 +4,7 @@ package constants
 const (
 	// AES_KEY AES-256 密钥（32字节）
 	AES_KEY = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
-	
+
 	// AES_IV 初始化向量（16字节）
 	AES_IV = "0123456789abcdef"
 )
