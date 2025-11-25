@@ -87,7 +87,7 @@ func main() {
 			return
 		}
 		content := string(fileContent)
-		
+
 		// 尝试从文件内容中提取 base64
 		extractedBase64 := extractBase64FromOutput(content)
 		if extractedBase64 != "" {
@@ -97,7 +97,7 @@ func main() {
 				format = "base64（从文件提取）"
 			}
 		}
-		
+
 		// 如果提取 base64 失败，尝试提取 16 进制
 		if err != nil || extractedBase64 == "" {
 			extractedHex := extractHexFromOutput(content)
@@ -109,7 +109,7 @@ func main() {
 				}
 			}
 		}
-		
+
 		// 如果提取失败，尝试直接解析（可能是纯密文文件）
 		if err != nil {
 			// 尝试作为 base64 解析
@@ -126,7 +126,7 @@ func main() {
 				}
 			}
 		}
-		
+
 		if err != nil {
 			fmt.Printf("❌ 无法从文件中识别密文格式: %v\n", err)
 			return
@@ -135,7 +135,7 @@ func main() {
 		cleanedHex := cleanHexString(*ciphertextHex)
 		originalLen := len(*ciphertextHex)
 		cleanedLen := len(cleanedHex)
-		
+
 		// 检查长度是否为偶数
 		if cleanedLen%2 != 0 {
 			fmt.Printf("❌ 16进制字符串长度错误\n")
@@ -151,7 +151,7 @@ func main() {
 			fmt.Printf("   3. 检查复制的 16 进制字符串是否完整\n")
 			return
 		}
-		
+
 		ciphertext, err = hex.DecodeString(cleanedHex)
 		format = "16进制"
 		if err != nil {
@@ -198,12 +198,12 @@ func main() {
 		// 如果没有命令行参数，尝试从标准输入读取
 		if len(os.Args) > 1 {
 			input := strings.Join(os.Args[1:], " ")
-			
+
 			// 首先尝试从加密程序输出中提取 base64
 			extractedBase64 := extractBase64FromOutput(input)
 			extractedHex := extractHexFromOutput(input)
 			success := false
-			
+
 			if extractedBase64 != "" {
 				cleanedBase64 := cleanBase64String(extractedBase64)
 				ciphertext, err = base64.StdEncoding.DecodeString(cleanedBase64)
@@ -212,7 +212,7 @@ func main() {
 					success = true
 				}
 			}
-			
+
 			// 如果提取 base64 失败，尝试提取 16 进制
 			if !success && extractedHex != "" {
 				cleanedHex := cleanHexString(extractedHex)
@@ -222,7 +222,7 @@ func main() {
 					success = true
 				}
 			}
-			
+
 			// 如果提取失败，尝试直接解析
 			if !success {
 				// 尝试作为16进制解析
@@ -328,7 +328,7 @@ func AESDecrypt1(ciphertext, key []byte, iv []byte) ([]byte, error) {
 	}
 	blockSize := block.BlockSize()
 	if len(ciphertext)%blockSize != 0 {
-		return nil, fmt.Errorf("密文长度 %d 不是块大小 %d 的整数倍（缺少 %d 字节）", 
+		return nil, fmt.Errorf("密文长度 %d 不是块大小 %d 的整数倍（缺少 %d 字节）",
 			len(ciphertext), blockSize, blockSize-(len(ciphertext)%blockSize))
 	}
 	blockMode := cipher.NewCBCDecrypter(block, iv)
